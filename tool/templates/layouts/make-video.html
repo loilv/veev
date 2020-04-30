@@ -1,0 +1,117 @@
+{% load static %}
+<div class="panel-body">
+    <form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="video-name">Tên video<span class="text-danger">*</span></label>
+            <input type="text" name="i-name" id="video-name" class="form-control" placeholder=" Tên video">
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="content">Nội dung văn bản<span class="text-danger">*</span></label>
+                    <textarea name="t-content" id="content" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="config">
+            <div class="form-group">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li><a class="nav-link active" data-toggle="tab" href="#tab-3"><i
+                                class="fa fa-file-video-o"></i>
+                            Cấu hình video</a></li>
+                        <li><a class="nav-link" data-toggle="tab" href="#tab-5"><i class="fa fa-upload"></i> Upload</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-3" class="tab-pane active">
+                            <div class="panel-body">
+                                <div class="form-group row">
+                                    <div class="col-sm-2 col-form-label"><b>Thêm Intro</b></div>
+                                    <div class="col-sm-4">
+                                        <input type="file" name="f-intro" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-2 col-form-label"><b>Thêm Outro</b></div>
+                                    <div class="col-sm-4">
+                                        <input type="file" name="f-outro" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-2 col-form-label"><b>Thêm nhạc nền<span class="text-danger">*</span></b></div>
+                                    <div class="col-sm-4">
+                                        <input type="file" name="f-bg-music" class="form-control">
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="form-group">
+                                            <label for="formControlRange"><b>Volume</b></label>
+                                            <input type="range" min="0" max="5" class="form-control-range"
+                                                   id="formControlRange"
+                                                   name="i-volume">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <div class="col-sm-2 col-form-label"><b>Hình ảnh<span class="text-danger">*</span></b></div>
+                                    <div class="col-sm-10">
+                                        <i>Cách nhau bằng dấu , hoặc enter</i>
+                                        <input class="tagsinput form-control" name="i-images" type="text" value=""/>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <div class="col-sm-2 col-form-label"><b>Hiệu ứng<span class="text-danger">*</span></b></div>
+                                    <div class="col-sm-10">
+                                        <div class="i-checks">
+                                            <label>
+                                                <input type="checkbox" name="c-effect" value="fadeIn"><i></i>
+                                                <img width="50" src="{% static 'img/transition_fade_in_two.gif' %}" alt="">
+                                                Fade in </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                    <div class="col-sm-2 col-form-label"><b>Chọn giọng đọc<span class="text-danger">*</span></b></div>
+                                    <div class="col-sm-4">
+                                        <select name="s-voice" id="s-voice" class="form-control">
+                                            <option value="hn-quynhanh">[HN] Quỳnh Anh</option>
+                                            <option value="doanngocle">Đoàn Ngọc Lê (Miền Bắc)</option>
+                                            <option value="trinhthiviettrinh">Trịch Thị Việt Trinh (Miền Bắc)</option>
+                                            <option value="phamtienquan">Phạm Tiến Quân (Miền Bắc)</option>
+                                            <option value="lethiyen">Lê Thị Yến (Miền Nam)</option>
+                                            <option value="nguyenthithuyduyen">Nguyễn Thị Duyên (Miền Nam)</option>
+                                            <option value="hue-maingoc">Mai Ngọc (Miền Trung)</option>
+                                            <option value="hue-baoquoc">Bảo Quốc (Miền Trung)</option>
+                                            <option value="hcm-minhquan">[HCM] Minh Quân</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-2 col-form-label"><b>Tạo phụ đề<span class="text-danger">*</span></b></div>
+                                    <div class="col-sm-10">
+                                        <div class="i-checks"><label> <input type="checkbox" name="c-sub" value="sub"> <i></i> Tạo phụ
+                                            đề </label></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-5" class="tab-pane">
+                            <div class="panel-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-create">
+                <div class="form-group text-center">
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i>Tạo video</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
