@@ -43,7 +43,7 @@ def create_video(request):
         file_complete = scripts.merge_video_sub(video_prod, sub, 'complete')
         if intro and outro:
             file_complete = scripts.handle_merge_into_outro(
-                intro=intro, video=file_complete, outro=outro, name='complete'
+                intro=intro, video=file_complete, outro=outro, name='full'
             )
         file = FileWrapper(open(file_complete, 'rb'))
         response = HttpResponse(file, content_type="video/mp4")

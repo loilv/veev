@@ -189,9 +189,7 @@ def handle_create_bg_music(music, audio, volume):
 
 def handle_merge_into_outro(intro=None, video=None, outro=None, name=None):
     save_path = base_dir + '/media/prods/'
-    code = 'ffmpeg -i {intro} -i {video} -i {outro} ' \
-           '-filter_complex "[0:v:0]scale=1920:1080[c1]; [1:v:0]scale=1920:1080[c2]; [2:v:0]scale=1920:1080[c3],' \
-           ' [c1] [0:a:0] [c2] [1:a:0] [c3] [2:a:0] concat=n=3:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" {save}.mp4'\
+    code = 'melt {intro} {video} {outro} -mix 30 -mixer luma -consumer avformat:{save}.mp4 vcodec=libx264'\
         .format(intro=intro, video=video, outro=outro, save=save_path + name)
     handle_process_ffmpeg(code)
     return '{}.mp4'.format(save_path + name)
