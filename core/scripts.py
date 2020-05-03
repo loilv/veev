@@ -175,7 +175,7 @@ def handle_create_video_loop(video=None, audio=None):
 
 def handle_create_bg_music(music, audio, volume):
     if music:
-        bg_audio = helpers.handle_upload_file(music, 'bg-music', 'music')
+        bg_audio = helpers.handle_upload_file(music, music.name, 'music')
         save_path = base_dir + '/media/audio/'
         code = 'ffmpeg -y -i ' + audio + ' -i ' \
                + bg_audio + \
