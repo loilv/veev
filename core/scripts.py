@@ -167,7 +167,7 @@ def generate_sub(path_file):
 
 def handle_create_video_loop(video=None, audio=None):
     save_path = base_dir + '/media/prods/'
-    code = 'ffmpeg -y -i {audio} -filter_complex movie={video}:loop=0,setpts=N/FRAME_RATE/TB -shortest {save}prod.mp4'.format(
+    code = 'ffmpeg -y -i {audio} -filter_complex "movie={video}:loop=0,setpts=N/FRAME_RATE/TB" -shortest {save}prod.mp4'.format(
         video=video, audio=audio, save=save_path)
     handle_process_ffmpeg(code)
     return '{}prod.mp4'.format(save_path)
